@@ -19,7 +19,7 @@ export interface IuguClient {
   state?: string;
   district?: string;
   complement?: string;
-  custom_variables?: [];
+  custom_variables?: IuguCustomVariable[];
   created_at?: Date;
   updated_at?: Date;
 }
@@ -40,7 +40,7 @@ export interface IuguCustomer {
   state?: string;
   district?: string;
   complement?: string;
-  custom_variables?: [];
+  custom_variables?: IuguCustomVariable[];
   created_at?: Date;
   updated_at?: Date;
 }
@@ -126,8 +126,8 @@ export interface IuguInvoice {
   commission_cents?: null;
   secure_id?: string;
   secure_url?: string;
-  customer_id?: null;
-  user_id?: null;
+  customer_id?: string;
+  user_id?: string;
   total?: string;
   taxes_paid?: string;
   commission?: string;
@@ -139,7 +139,7 @@ export interface IuguInvoice {
   bank_slip?: IuguBankSlip;
   items?: IuguItem[];
   variables?: IuguVariable[];
-  custom_variables?: any[];
+  custom_variables?: IuguCustomVariable[];
   payer?: IuguPayer;
   commissions?: any;
   early_payment_discounts?: IuguPaymentDiscount[];
@@ -216,7 +216,7 @@ export interface IuguSubscription {
   recent_invoices?: any;
   subitems?: Subitem[];
   logs?: Log[];
-  custom_variables?: any[];
+  custom_variables?: IuguCustomVariable[];
 }
 interface Feat {
   name: string;
@@ -516,4 +516,33 @@ export interface IuguWithdrawRequest {
 export interface IuguCustomVariable {
   name?: string;
   value?: string;
+}
+
+export type IuguWebhookEvents = "all" | 
+                                "customer_payment_method.new" | 
+                                "invoice.created" | 
+                                "invoice.status_changed" | 
+                                "invoice.refund" | 
+                                "invoice.payment_failed" | 
+                                "invoice.dunning_action" | 
+                                "invoice.due" | 
+                                "invoice.installment_released" | 
+                                "invoice.released" | 
+                                "subscription.suspended" | 
+                                "subscription.activated" | 
+                                "subscription.created" | 
+                                "subscription.renewed" | 
+                                "subscription.expired" | 
+                                "subscription.changed" | 
+                                "referrals.verification" | 
+                                "referrals.bank_verification" | 
+                                "withdraw_request.created" | 
+                                "withdraw_request.status_changed"
+
+export interface IuguWebhook {
+  id?: string;
+  url: string;
+  event: IuguWebhookEvents;
+  authorization?: string;
+  active?: boolean;
 }

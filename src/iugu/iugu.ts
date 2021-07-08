@@ -46,9 +46,10 @@ class Iugu {
     return IuguTransfers
   }
 
-  setApiKey (apikey: string): void {
+  setApiKey (apikey: string): Iugu {
     IuguMethods.setApiKey(apikey)
+    return this
   }
 }
 
-export default new Iugu()
+export default Iugu

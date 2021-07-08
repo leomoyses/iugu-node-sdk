@@ -27,6 +27,14 @@ class IuguAccounts extends IuguCommon<IuguInfoAccount> {
     })(data, urlParams)
   }
 
+  async requestInformation (data: string | object, urlParams?: Map<string, string> | undefined, queryParams?: Map<string, string> | undefined): Promise<IuguInfoAccount> {
+    return IuguMethods.createIuguMethod<IuguInfoAccount>({
+      method: 'get',
+      path: '/' + this.routeName + '/{account_id}',
+      urlParams: ['account_id']
+    })(data, urlParams)
+  }
+
   get routeName (): string {
     return 'accounts'
   }

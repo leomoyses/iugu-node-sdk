@@ -1,7 +1,7 @@
 {
-  "name": "iugu-node-sdk",
-  "version": "0.1.1",
-  "description": "Biblioteca não-oficial da API Iugu para Node.js feita em Typescript",
+  "name": "iugu-node-sdk-fork",
+  "version": "0.1.19",
+  "description": "Biblioteca não-oficial da API Iugu para Node.js feita em Typescript. Forked from Vinicius Picanco.",
   "main": "lib/iugu.js",
   "types": "lib/iugu.d.ts",
   "scripts": {
@@ -9,14 +9,13 @@
     "doc": "npx typedoc --out ./docs --mode file ./lib",
     "build": "npx tsc -p ./tsconfig.json",
     "prepare": "npm run build",
-    "prepublishOnly": "npm test",
     "postversion": "git push && git push --tags"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/V1pi/iugu-node-sdk.git"
+    "url": "https://github.com/leomoyses/iugu-node-sdk"
   },
-  "bugs:": "https://github.com/V1pi/iugu-node-sdk/issues",
+  "bugs:": "https://github.com/leomoyses/iugu-node-sdk/issues",
   "keywords": [
     "iugu",
     "sdk",
@@ -26,8 +25,8 @@
     "lib"
   ],
   "author": {
-    "name": "Vinicius Picanco",
-    "email": "viniciusspicanco@gmail.com"
+    "name": "Leonardo Moyses",
+    "email": "leomoyses@gmail.com"
   },
   "license": "BSD-3-Clause",
   "devDependencies": {
